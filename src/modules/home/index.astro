@@ -1,0 +1,24 @@
+---
+import HTML from '../astro/html.astro';
+import Head from '../astro/head.astro';
+import Nav from '../astro/nav.astro';
+
+import Hero from './hero.astro';
+
+import { main } from './styles.css';
+---
+
+<HTML>
+  <Head />
+  <body>
+    <Nav />
+    <main class={main}>
+      <Hero />
+
+      <p>
+        You've stumbled upon my dev blog. I'm not sure what's going to go here
+        yet, but soon I'll have some stuff! Maybe!
+      </p>
+    </main>
+  </body>
+</HTML>

@@ -1,0 +1,12 @@
+# dependencies
+node_modules/
+
+# outputs
+dist/
+.astro/
+
+# environment variables
+.env.*
+
+# misc
+.DS_Store

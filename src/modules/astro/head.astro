@@ -1,0 +1,27 @@
+---
+type Props = {
+  title?: string;
+};
+
+const { title } = Astro.props;
+
+const displayTitle = title ? `Nick Telsan - ${title}` : 'Nick Telsan';
+---
+
+<head>
+  <meta charset="utf-8" />
+  <link
+    rel="icon"
+    type="image/png"
+    href="/light.png"
+    media="(prefers-color-scheme:no-preference)"
+  />
+  <link
+    rel="icon"
+    type="image/png"
+    href="/dark.png"
+    media="(prefers-color-scheme:dark)"
+  />
+  <meta name="viewport" content="width=device-width" />
+  <title>{displayTitle}</title>
+</head>

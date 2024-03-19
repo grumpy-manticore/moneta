@@ -1,0 +1,21 @@
+---
+import HTML from './html.astro';
+import Head from './head.astro';
+import Nav from './nav.astro';
+
+type Props = {
+  title: string;
+};
+
+const { title } = Astro.props;
+---
+
+<HTML>
+  <Head title={title} />
+  <body>
+    <Nav />
+    <main>
+      <slot />
+    </main>
+  </body>
+</HTML>

@@ -1,0 +1,46 @@
+---
+import { getCollection } from 'astro:content';
+import { nav, navList, navItem, navLink } from './styles.css.ts';
+import NavLink from './nav-link.astro';
+
+const blogEntries = await getCollection('posts');
+const mostRecentPost = blogEntries.sort((a, b) => {
+  return (
+    new Date(b.data.publicationDate).getTime() -
+    new Date(a.data.publicationDate).getTime()
+  );
+})[0];
+---
+
+<nav class={nav}>
+  <ul class={navList}>
+    <li class={navItem}>
+      <NavLink href="/">Home</NavLink>
+    </li>
+    <li class={navItem}>
+      <NavLink href="/about">About</NavLink>
+    </li>
+    <li class={navItem}>
+      <NavLink href=`/posts/${mostRecentPost.slug}`>Latest Post</NavLink>
+    </li>
+    <li class={navItem}>
+      <NavLink href="/posts">All Posts</NavLink>
+    </li>
+    <li class={navItem}>
+      <NavLink href="/projects">Projects</NavLink>
+    </li>
+  </ul>
+  <ul class={navList}>
+    <li class={navItem}>
+      <NavLink href="https://github.com/grumpy-manticore">GitHub</NavLink>
+    </li>
+    <li class={navItem}>
+      <NavLink href="https://www.linkedin.com/in/nick-telsan-9509841b2/"
+        >LinkedIn</NavLink
+      >
+    </li>
+    <li class={navItem}>
+      <NavLink href="#">RSS</NavLink>
+    </li>
+  </ul>
+</nav>

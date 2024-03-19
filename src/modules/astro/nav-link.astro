@@ -1,0 +1,15 @@
+---
+import { navLink } from './styles.css.ts';
+
+type Props = {
+  href: string;
+};
+
+const { href } = Astro.props;
+
+const active = href === Astro.url.pathname ? 'active' : undefined;
+---
+
+<a href={href} class={navLink} data-active={active}>
+  <slot />
+</a>
