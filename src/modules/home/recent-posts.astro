@@ -1,0 +1,69 @@
+---
+import { getCollection } from 'astro:content';
+
+import {
+  recentPostsContainer,
+  recentPostsHeading,
+  recentPostBox,
+  recentPostTitle,
+  recentPostTitleContainer,
+  recentPostTagsContainer,
+  recentPostDescription,
+  recentPostReadMoreLink,
+  recentPostDate,
+  recentPostUpdateDate,
+} from './styles.css';
+import Tag from '../astro/tag.astro';
+
+const blogEntries = await getCollection('posts');
+const mostRecentPosts = blogEntries
+  .sort((a, b) => {
+    return (
+      new Date(b.data.publicationDate).getTime() -
+      new Date(a.data.publicationDate).getTime()
+    );
+  })
+  .slice(0, 5);
+---
+
+<div class={recentPostsContainer}>
+  <h2 class={recentPostsHeading}>Latest Posts</h2>
+
+  {
+    mostRecentPosts.map((entry) => (
+      <section class={recentPostBox}>
+        <div class={recentPostTitleContainer}>
+          <h3 class={recentPostTitle}>{entry.data.title}</h3>
+          <div>
+            <time
+              class={recentPostDate}
+              datetime={entry.data.publicationDate.toISOString()}
+            >
+              {entry.data.publicationDate.toISOString().slice(0, 10)}
+            </time>
+            {entry.data.editDate && (
+              <time
+                class={recentPostUpdateDate}
+                datetime={entry.data.editDate.toISOString()}
+              >
+                (updated {entry.data.editDate.toISOString().slice(0, 10)})
+              </time>
+            )}
+          </div>
+        </div>
+
+        <div class={recentPostTagsContainer}>
+          {entry.data.tags.map((tag) => (
+            <Tag tag={tag}>{tag}</Tag>
+          ))}
+        </div>
+
+        <p class={recentPostDescription}>{entry.data.description}</p>
+
+        <a href={`/posts/${entry.slug}`} class={recentPostReadMoreLink}>
+          Read More
+        </a>
+      </section>
+    ))
+  }
+</div>

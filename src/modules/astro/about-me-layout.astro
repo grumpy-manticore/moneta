@@ -1,0 +1,11 @@
+---
+import BaseLayout from './base-layout.astro';
+import './post-styles.css.ts';
+import { postWrapper } from './post-styles.css.ts';
+---
+
+<BaseLayout title="About Me">
+  <div class={postWrapper}>
+    <slot />
+  </div>
+</BaseLayout>

@@ -4,6 +4,7 @@ import Head from '../astro/head.astro';
 import Nav from '../astro/nav.astro';
 
 import Hero from './hero.astro';
+import RecentPosts from './recent-posts.astro';
 
 import { main } from './styles.css';
 ---
@@ -15,10 +16,7 @@ import { main } from './styles.css';
     <main class={main}>
       <Hero />
 
-      <p>
-        You've stumbled upon my dev blog. I'm not sure what's going to go here
-        yet, but soon I'll have some stuff! Maybe!
-      </p>
+      <RecentPosts />
     </main>
   </body>
 </HTML>

@@ -1,23 +1,24 @@
 ---
-import BaseLayout from '~/modules/astro/base-layout.astro';
 import { getCollection } from 'astro:content';
+import BaseLayout from '~/modules/astro/base-layout.astro';
 import {
   maxWidthContainer,
   noDecorationList,
   title,
 } from '~/modules/styles/general.css';
 
-const posts = await getCollection('posts');
+const allPosts = await getCollection('posts');
+const tags = [...new Set(allPosts.map((post) => post.data.tags).flat())];
 ---
 
-<BaseLayout title="Posts">
-  <h1 class={title}>Posts</h1>
+<BaseLayout title="Tags">
+  <h1 class={title}>Tags</h1>
   <div class={maxWidthContainer}>
     <ul class={noDecorationList}>
       {
-        posts.map((post) => (
+        tags.map((tag) => (
           <li>
-            <a href={`/posts/${post.slug}`}>{post.data.title}</a>
+            <a href={`/tags/${tag}`}>{tag}</a>
           </li>
         ))
       }

@@ -1,0 +1,13 @@
+---
+import { tagLink } from './styles.css.ts';
+
+type Props = {
+  tag: string;
+};
+
+const { tag } = Astro.props;
+---
+
+<a href={`./tags/${tag}`} class={tagLink}>
+  #<slot />
+</a>

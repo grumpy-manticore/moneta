@@ -3,6 +3,8 @@ import HTML from './html.astro';
 import Head from './head.astro';
 import Nav from './nav.astro';
 
+import { main } from './styles.css';
+
 type Props = {
   title: string;
 };
@@ -14,7 +16,7 @@ const { title } = Astro.props;
   <Head title={title} />
   <body>
     <Nav />
-    <main>
+    <main class={main}>
       <slot />
     </main>
   </body>

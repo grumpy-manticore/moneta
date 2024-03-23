@@ -17,6 +17,7 @@
   },
   "dependencies": {
     "@astrojs/check": "^0.5.9",
+    "@astrojs/rss": "^4.0.5",
     "@fontsource/fira-mono": "^5.0.12",
     "@vanilla-extract/css": "^1.14.1",
     "astro": "^4.5.6",
